@@ -1,0 +1,56 @@
+package com.example.demo.controllers;
+
+import com.example.demo.models.Movie;
+import com.example.demo.repositories.MovieRepository; 
+import org.springframework.beans.factory.annotation.Autowired; 
+import org.springframework.stereotype.Controller; 
+import org.springframework.ui.Model; 
+import org.springframework.web.bind.annotation.GetMapping; 
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
+
+import java.util.List;
+import org.springframework.web.bind.annotation.RequestParam;
+
+
+@Controller
+public class MovieController {
+
+    @Autowired
+    private MovieRepository movieRepository;
+
+    @GetMapping("/movies")
+    public String index(Model model) {
+        List<Movie> movies = movieRepository.findAll(); 
+        model.addAttribute("title", "Movies - MovieNest"); 
+        model.addAttribute("subtitle", "List of movies"); 
+        model.addAttribute("products", movies);
+        return "movie/index"; // Retorna la vista product/index.html (Thymeleaf)
+    }
+
+    @GetMapping("/movies/{id}") 
+    public String show(@PathVariable("id") Long id, Model model) { 
+        Movie movie = movieRepository.findById(id) .orElseThrow(() -> new RuntimeException("Movie not found")); 
+        model.addAttribute("title", movie.getName() + " - Online Store"); 
+        model.addAttribute("subtitle", movie.getName() + " - Product information"); 
+        model.addAttribute("product", movie);
+        return "movie/show"; // Retorna la vista product/show.html (Thymeleaf)    
+    }
+    
+    @GetMapping("/movies/create")
+    public String createMovieForm(Model model) { 
+        model.addAttribute("product", new Movie()); 
+        return "movie/create"; 
+    }
+
+    @PostMapping("/movies") 
+    public String save(Movie movie) { 
+        // Validaciones mínimas 
+        if (movie.getName() == null || movie.getName().isEmpty() || movie.getDescription() == null || movie.getDescription().isEmpty() || movie.getPrice() == null) { 
+            throw new RuntimeException("Name, Description and Price are required"); 
+        } 
+        movieRepository.save(movie); 
+        return "redirect:/movies"; 
+    }
+
+}

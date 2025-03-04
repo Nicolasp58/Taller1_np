@@ -1,0 +1,4 @@
+**INSTRUCCIONES PARA CORRER EL PROYECTO**
+
+Incluya en el código comprimido un archivo setup.txt donde explique cómo correr el proyecto 
+(si se deben hacer cambios a archivos de configuración, a que ruta inicial acceder, etc). 
