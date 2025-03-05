@@ -21,7 +21,7 @@
                 <div class="col-md-4"> 
                     <img src="https://placehold.co/400x400" class="img-fluid rounded-start" alt="Movie Image"> 
                 </div> 
-                <div class="col-md-8"> 
+                <div class="col-md-8 d-flex flex-column" style="min-height: 100%;"> 
                     <div class="card-body text-black"> 
                         <h5 class="card-title" th:text="${movie.name}">Movie Name</h5> 
                         <h5 class="card-description" th:text="${movie.description}">Movie Description</h5>
@@ -30,6 +30,9 @@
                             <span th:text="${movie.price}">0</span> 
                         </p> 
                     </div> 
+                    <div class="mt-auto">
+                        <a class="btn btn-primary delete text-white" style="margin-left: 16px; margin-bottom: 20px; border-color: #c03409; background-color: #c03409;" th:href="@{/movies}"><b>Delete Movie</b></a>
+                    </div>
                 </div> 
             </div>
         </div> 

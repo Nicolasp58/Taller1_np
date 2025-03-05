@@ -15,6 +15,10 @@ body {
     background-color: #1f2d80 !important;
 }
 
+.delete {
+    background-color: #c03409;
+}
+
 nav{
     font-weight: 700;
 }
