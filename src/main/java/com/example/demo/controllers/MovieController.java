@@ -24,22 +24,22 @@ public class MovieController {
         List<Movie> movies = movieRepository.findAll(); 
         model.addAttribute("title", "Movies - MovieNest"); 
         model.addAttribute("subtitle", "List of movies"); 
-        model.addAttribute("products", movies);
-        return "movie/index"; // Retorna la vista product/index.html (Thymeleaf)
+        model.addAttribute("movies", movies);
+        return "movie/index"; 
     }
 
     @GetMapping("/movies/{id}") 
     public String show(@PathVariable("id") Long id, Model model) { 
         Movie movie = movieRepository.findById(id) .orElseThrow(() -> new RuntimeException("Movie not found")); 
         model.addAttribute("title", movie.getName() + " - Online Store"); 
-        model.addAttribute("subtitle", movie.getName() + " - Product information"); 
-        model.addAttribute("product", movie);
-        return "movie/show"; // Retorna la vista product/show.html (Thymeleaf)    
+        model.addAttribute("subtitle", movie.getName() + " - Movie information"); 
+        model.addAttribute("movie", movie);
+        return "movie/show";    
     }
     
     @GetMapping("/movies/create")
     public String createMovieForm(Model model) { 
-        model.addAttribute("product", new Movie()); 
+        model.addAttribute("movie", new Movie()); 
         return "movie/create"; 
     }
 

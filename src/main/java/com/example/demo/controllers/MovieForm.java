@@ -11,7 +11,7 @@ public class MovieForm{
     @NotEmpty(message = "The movie name is required")
     private String name;
 
-    @NotEmpty(message = "The product desciption is required")
+    @NotEmpty(message = "The movie desciption is required")
     private String description;
 
     @NotNull(message = "The price is required")
