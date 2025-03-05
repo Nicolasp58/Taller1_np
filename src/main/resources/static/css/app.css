@@ -4,7 +4,7 @@
 
 body {
     background-color: #071d33 !important;
-    color: white; /* Asegura que el texto sea visible en el fondo oscuro */
+    color: white; 
 }
 
 .bg-secondary {
@@ -12,7 +12,7 @@ body {
 }
 
 .bg-primary {
-    background-color: #1f2d80 !important;
+    background-color: #040827 !important;
 }
 
 .delete {

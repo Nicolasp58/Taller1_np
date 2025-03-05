@@ -24,14 +24,17 @@
                 <div class="col-md-8 d-flex flex-column" style="min-height: 100%;"> 
                     <div class="card-body text-black"> 
                         <h5 class="card-title" th:text="${movie.name}">Movie Name</h5> 
-                        <h5 class="card-description" th:text="${movie.description}">Movie Description</h5>
+                        <h6 class="card-description" th:text="${movie.description}">Movie Description</h6>
                         <p class="card-text"> 
                             <strong>Price: $</strong> 
                             <span th:text="${movie.price}">0</span> 
                         </p> 
                     </div> 
                     <div class="mt-auto">
-                        <a class="btn btn-primary delete text-white" style="margin-left: 16px; margin-bottom: 20px; border-color: #c03409; background-color: #c03409;" th:href="@{/movies}"><b>Delete Movie</b></a>
+                        <form th:action="@{/movies/{id}/delete(id=${movie.id})}" method="post">
+                            <button type="submit" class="btn btn-primary delete text-white" 
+                            style="margin-left: 16px; margin-bottom: 20px; border-color: #c03409; background-color: #c03409;"><b>Delete Movie</b></button>
+                        </form>
                     </div>
                 </div> 
             </div>

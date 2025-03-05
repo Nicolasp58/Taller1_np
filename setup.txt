@@ -4,3 +4,6 @@ Incluya en el código comprimido un archivo setup.txt donde explique cómo corre
 (si se deben hacer cambios a archivos de configuración, a que ruta inicial acceder, etc). 
 
     <img src="images/peliculas3.jpg" alt="MovieNest Banner" class="img-fluid w-100 mt-3">
+
+
+maximo numero de caracteres de la descripcion: 1000

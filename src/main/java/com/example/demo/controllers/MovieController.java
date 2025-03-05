@@ -4,13 +4,16 @@ import com.example.demo.models.Movie;
 import com.example.demo.repositories.MovieRepository; 
 import org.springframework.beans.factory.annotation.Autowired; 
 import org.springframework.stereotype.Controller; 
-import org.springframework.ui.Model; 
+import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping; 
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 
 import java.util.List;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.RequestBody;
+
 
 
 @Controller
@@ -47,11 +50,9 @@ public class MovieController {
     public String successPage() {
         return "movie/success";
     }
-    
 
     @PostMapping("/movies") 
-    public String save(Movie movie) { 
-        // Validaciones mínimas 
+    public String save(Movie movie) {  
         if (movie.getName() == null || movie.getName().isEmpty() || movie.getDescription() == null || movie.getDescription().isEmpty() || movie.getPrice() == null) { 
             throw new RuntimeException("Name, Description and Price are required"); 
         } 
@@ -59,4 +60,10 @@ public class MovieController {
         return "redirect:/movies/success"; 
     }
 
+    @PostMapping("/movies/{id}/delete")
+    public String deleteMovie(@PathVariable("id") Long id) {
+        movieRepository.deleteById(id);
+        return "redirect:/movies";
+    }
+    
 }
