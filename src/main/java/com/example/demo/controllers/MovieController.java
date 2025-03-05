@@ -43,6 +43,12 @@ public class MovieController {
         return "movie/create"; 
     }
 
+    @GetMapping("/movies/success")
+    public String successPage() {
+        return "movie/success";
+    }
+    
+
     @PostMapping("/movies") 
     public String save(Movie movie) { 
         // Validaciones mínimas 
@@ -50,7 +56,7 @@ public class MovieController {
             throw new RuntimeException("Name, Description and Price are required"); 
         } 
         movieRepository.save(movie); 
-        return "redirect:/movies"; 
+        return "redirect:/movies/success"; 
     }
 
 }
